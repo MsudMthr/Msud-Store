@@ -20,16 +20,20 @@ class Cards extends Component {
     )
   };
 
+
+
   render() {
     const { shopData } = this.state;
     return (
       <div className="flex flex-wrap">
         {shopData.map((data) => (
           <Card
+            key={data.id}
             image={data.image}
             name={data.title}
             cost={data.price}
             rate={data.rating.rate}
+            deleteCard = {() => this.deleteCard(data.id)}
           />
         ))}
       </div>

@@ -1,28 +1,40 @@
 import React, { Component } from "react";
 
+
+import Menu from "./Menu";
+
+
 class Navabr extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showToggle: false,
+    };
+  }
+  toggleHandler = () => {
+    this.setState({
+      showToggle: !this.state.showToggle,
+    });
+  };
+
   render() {
+    const {showToggle} = this.state;
     return (
-      <div className="flex justify-between px-4 md:flex-col ">
+      <div className="flex  justify-between px-4 md:flex-col items-center z-10">
         <h1 className=" font-bold m-4 md:pt-4">STORE</h1>
-        <ul className="flex justify-evenly md:flex-col md:h-48 items-center">
-          <li>
-            <input id="dress" className="hidden" type={"radio"} name="category" />
-            <label className="mx-2 cursor-pointer hover:text-violet-600 transition-all border-b-2 px-2 py-2  md:my-4 md:py-2" htmlFor="dress">men's clothing</label>
-          </li>
-          <li>
-            <input id="man" className="hidden" type={"radio"} name="category" />
-            <label className="mx-2 cursor-pointer hover:text-violet-600 transition-all border-b-2 px-2 py-2  md:my-4 md:py-2" htmlFor="man">jewelery</label>
-          </li>
-          <li>
-            <input id="man" className="hidden" type={"radio"} name="category" />
-            <label className="mx-2 cursor-pointer hover:text-violet-600 transition-all border-b-2 px-2 py-2  md:my-4 md:py-2" htmlFor="man">electronics</label>
-          </li>
-          <li>
-            <input id="woman" className="hidden" type={"radio"} name="category" />
-            <label className="mx-2 cursor-pointer hover:text-violet-600 transition-all border-b-2 px-2 py-2  md:my-4 md:py-2" htmlFor="woman">women's clothing</label>
-          </li>
-        </ul>
+
+        <div>
+        <Menu open={showToggle} />
+        <div
+          className={`flex flex-col  sm:hidden  h-4 justify-around  ${showToggle && "absolute top-4 right-4 z-20"  }`}
+          onClick={this.toggleHandler}
+          open={showToggle}
+        >
+          <span className={`w-4 bg-black rounded-sm h-0.5 origin-[1px] transition-all  ${showToggle &&  "rotate-45" }`}></span>
+          <span className={`w-4 bg-black rounded-sm h-0.5 origin-[1px] transition-all  ${showToggle && "translate-x-full opacity-0" }`}></span>
+          <span className={`w-4 bg-black rounded-sm h-0.5 origin-[1px] transition-all  ${showToggle &&  "-rotate-45" }`}></span>
+        </div>
+        </div>
       </div>
     );
   }
