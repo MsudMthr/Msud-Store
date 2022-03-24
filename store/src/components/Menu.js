@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Menu extends Component {
   constructor(props) {
@@ -8,11 +9,9 @@ class Menu extends Component {
     };
   }
 
-  
-
   render() {
     const { category } = this.state;
-    const { open ,changeHandler} = this.props;
+    const { open } = this.props;
     return (
       <div>
         <ul
@@ -25,64 +24,40 @@ class Menu extends Component {
           category={category}
         >
           <li>
-            <input
-              onChange={changeHandler}
-              id="men"
-              className="hidden"
-              type={"radio"}
-              name="category"
-            />
-            <label
+            <Link
+            to={'/products'}
               className="mx-2 cursor-pointer hover:text-violet-600 transition-all md:border-b-2 px-2 py-2  md:my-4 md:py-2"
-              htmlFor="men"
+              htmlFor="men's clothing"
             >
-              Men
-            </label>
+              products
+            </Link>
           </li>
           <li>
-            <input
-              onChange={changeHandler}
-              id="Jewelry"
-              className="hidden"
-              type={"radio"}
-              name="category"
-            />
-            <label
+            <Link
+            to={'/'}
               className="mx-2 cursor-pointer hover:text-violet-600 transition-all md:border-b-2 px-2 py-2  md:my-4 md:py-2"
-              htmlFor="Jewelry"
+              htmlFor="jewelry"
             >
               Jewelry
-            </label>
+            </Link>
           </li>
           <li>
-            <input
-              onChange={changeHandler}
-              id="electronics"
-              className="hidden"
-              type={"radio"}
-              name="category"
-            />
-            <label
+            <Link
+            to={'/'}
               className="mx-2 cursor-pointer hover:text-violet-600 transition-all md:border-b-2 px-2 py-2  md:my-4 md:py-2"
               htmlFor="electronics"
             >
               electronics
-            </label>
+            </Link>
           </li>
           <li>
-            <input
-              onChange={changeHandler}
-              id="women"
-              className="hidden"
-              type={"radio"}
-              name="category"
-            />
-            <label
+            <Link
+            to={'/'}
               className="mx-2 cursor-pointer hover:text-violet-600 transition-all md:border-b-2 px-2 py-2  md:my-4 md:py-2"
-              htmlFor="women"
+              htmlFor="women's clothing"
             >
               Women
-            </label>
+            </Link>
           </li>
         </ul>
       </div>

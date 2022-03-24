@@ -26,14 +26,20 @@ class Card extends Component {
 
   render() {
     const { numberOfSales } = this.state;
-    const { image, name, rate, cost  } = this.props;
+    const { image, name, rate, cost, count  } = this.props;
     return (
-      <div className={` w-6/12 sm:w-36  mx-auto md:w-48 flex flex-col justify-between  rounded-sm border-2 m-2 overflow-hidden shadow-xl p-2`}>
-        <img src={image} alt="dress " className="rounded-sm w-11/12 sm:w-32 md:w-44 h-40" />
+      <div
+      className="flex flex-col justify-between h-full"
+      >
+        <img
+          src={image}
+          alt="dress "
+          className="rounded-sm w-11/12 sm:w-32 md:w-44 h-40"
+        />
         <h5 className="font-semibold text-sm  p-2">{name}</h5>
         <div className="flex flex-col  ">
           <p className="font-medium inline p-2 self-end">{cost}$</p>
-          <div className="self-end flex items-center">
+          {/* <div className="self-end flex items-center">
             <img
               src={up}
               onClick={this.increaseCart}
@@ -49,10 +55,12 @@ class Card extends Component {
               } `}
               alt="decrease at cart"
             />
-          </div>
-          <p className="text-sm font-semibold">Rate: {rate} </p>
+          </div> */}
+          <p className="text-sm font-semibold">
+            Rate: {rate}{" "}
+            <span className="text-slate-600 font-thin">at {count} person</span>{" "}
+          </p>
         </div>
-      
       </div>
     );
   }
