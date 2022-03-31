@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class HomePage extends Component {
-    render() {
-        return (
-            <div className='flex justify-center items-center'>
-                <h1>Welcome</h1>
-            </div>
-        );
-    }
-}
+const HomePage = () => {
+  return (
+    <div className="flex justify-center items-center h-full ">
+      <h1>Welcome</h1>
+    </div>
+  );
+};
 
 export default HomePage;
