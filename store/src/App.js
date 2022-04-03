@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 
+
 import Navabr from "./components/Navabr";
 import Cards from "./components/Cards";
 import InfoCards from "./components/InfoCards";
@@ -17,8 +18,11 @@ const App = () => {
       .then((response) => setShopData(...shopData, response.data));
   }, []);
 
+  
+
+
   return (
-    <div className="container mx-auto xl:max-w-screen-xl ]">
+    <div className="container mx-auto xl:max-w-screen-xl">
       <div className="grid gap-4 grid-cols-1 md:grid-cols-12 md:grid-rows-[50px_minmax(100px,_1fr)">
         <div className="bg-white md:col-span-2 text-center row-span-1 sticky top-0 md:h-auto rounded-md shadow-lg">
           <Navabr />
@@ -39,7 +43,7 @@ const App = () => {
             />
             <Route
               path="/products"
-              render={(props) => <Cards {...props} shopData={shopData} />}
+              render={(props) => <Cards {...props} setShopData={setShopData} shopData={shopData} />}
             />
             <Route path={"/Loading"} exact component={Loading} />
             <Route path={"/"} exact component={HomePage} />
