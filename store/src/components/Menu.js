@@ -6,7 +6,7 @@ const Menu = ({ open }) => {
     <div>
       <ul
         open={open}
-        className={`transition-[1s] justify-evenly md:flex-col md:h-48 items-center sm:static sm:translate-x-0 sm:h-10   sm:flex sm:flex-row bg-purple-200 sm:bg-white fixed top-0 right-0 ${
+        className={`transition-all duration-300 ease-in-out justify-evenly md:flex-col md:h-48 items-center sm:static sm:translate-x-0 sm:h-10   sm:flex sm:flex-row bg-slate-200 sm:bg-white fixed top-0 right-0 ${
           open
             ? "flex flex-col z-10  h-screen translate-x-0"
             : "  translate-x-[1000%]"

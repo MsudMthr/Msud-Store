@@ -8,7 +8,7 @@ const InfoCards = ({ history, data }) => {
   return (
     <div className="flex flex-col w-9/12 mx-auto z-50 justify-center items-center mt-8">
       <div className="flex justify-center flex-col items-center text-center">
-        <img src={data.image} alt={data.title} className="w-56 max-h-56 h-56 my-4" />
+        <img src={data.image} alt={data.title} className="w-56 max-h-56 h-56 my-4 " />
         <p className="font-semibold">{data.title}</p>
       </div>
       <p className="text-justify my-4">{data.description}</p>

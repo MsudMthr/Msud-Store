@@ -1,25 +1,33 @@
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import { dataContext } from "./Cards";
 const Search = () => {
   const [showInput, setShowInput] = useState(false);
-
+  const [searchText, setSearchText] = useState("");
+  const data = useContext(dataContext);
   const isShow = () => {
     setShowInput(!showInput);
   };
+
+  const handleChange = (event) => {
+    setSearchText(event.target.value);
+  };
   return (
     <div className="flex justify-center items-center">
-      <button onClick={isShow} className={`z-10 ${showInput ? "hidden" : "flex"}`}>
+      <button
+        onClick={isShow}
+        className={`z-10 ${showInput ? "hidden" : "flex"}`}
+      >
         <svg
-          class="w-6 h-6 text-zinc-800"
+          className="w-6 h-6 text-zinc-800"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           ></path>
         </svg>
@@ -27,25 +35,28 @@ const Search = () => {
       <input
         typeof="search"
         placeholder="search"
-        className={`z-0 absolute w-full left-0 top-0 h-full text-lg overflow-hidden rounded-md px-4 placeholder:text-xl shadow-lg ${
-          showInput ? "flex" : "hidden"
+        onChange={handleChange}
+        className={`z-0 absolute w-full  left-0 top-0 h-full text-lg overflow-hidden rounded-md px-4 placeholder:text-xl shadow-lg transition ease-in duration-300 ${
+          showInput ? "flex  opacity-100" : "hidden opacity-0"
         } `}
       />
       <button
-        className={`absolute top-4 right-4 z-30 ${showInput ? "flex" : "hidden"}`}
+        className={`absolute top-4 right-8  z-30 hover:rotate-90 transition-all ease-in-out duration-700 ${
+          showInput ? "flex" : "hidden"
+        }`}
         onClick={isShow}
       >
         <svg
-          class="w-6 h-6"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M6 18L18 6M6 6l12 12"
           ></path>
         </svg>

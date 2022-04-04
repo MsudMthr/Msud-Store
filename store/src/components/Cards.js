@@ -6,6 +6,8 @@ import Card from "./Card";
 import LinkFilter from "./LinkFilter";
 import Loading from "./Loading";
 
+export const dataContext = React.createContext();
+
 const Cards = ({ shopData, location, setShopData }) => {
   // const categoryQuery = queryString.parse(location.search);
 
@@ -13,11 +15,15 @@ const Cards = ({ shopData, location, setShopData }) => {
     <>
       {/* {console.log(categoryQuery)}
       {console.log(categoryQuery.category)} */}
-      <LinkFilter />
+      <dataContext.Provider value={shopData}>
+        <LinkFilter />
+      </dataContext.Provider>
 
       <div className="flex flex-wrap justify-center">
-        {shopData.length ? (
-          shopData.map((data) => (
+        {shopData.loading ? (
+          <Loading />
+        ) : (
+          shopData.data.map((data) => (
             <Link
               to={`products/${data.id}`}
               key={data.id}
@@ -25,15 +31,13 @@ const Cards = ({ shopData, location, setShopData }) => {
             >
               <Card
                 image={data.image}
-                name={data.name}
+                name={data.title}
                 rate={data.rating.rate}
                 cost={data.price}
                 count={data.rating.count}
               />
             </Link>
           ))
-        ) : (
-          <Loading />
         )}
       </div>
     </>

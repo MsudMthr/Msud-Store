@@ -24,17 +24,17 @@ const Navabr = () => {
           open={showToggle}
         >
           <span
-            className={`w-4 bg-black rounded-sm h-0.5 origin-[1px] transition-all  ${
+            className={`w-4 bg-black rounded-sm h-0.5 origin-[1px] transition-all duration-500  ${
               showToggle && "rotate-45"
             }`}
           ></span>
           <span
-            className={`w-4 bg-black rounded-sm h-0.5 origin-[1px] transition-all  ${
+            className={`w-4 bg-black rounded-sm h-0.5 origin-[1px] transition-all duration-500  ${
               showToggle && "translate-x-full opacity-0"
             }`}
           ></span>
           <span
-            className={`w-4 bg-black rounded-sm h-0.5 origin-[1px] transition-all  ${
+            className={`w-4 bg-black rounded-sm h-0.5 origin-[1px] transition-all duration-500  ${
               showToggle && "-rotate-45"
             }`}
           ></span>
