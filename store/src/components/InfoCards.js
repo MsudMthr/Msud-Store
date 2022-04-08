@@ -1,10 +1,10 @@
 import React from "react";
-
+import useTitle from "../hooks/useTitle";
 const InfoCards = ({ history, data }) => {
   const Back = () => {
     history.push("/products");
   };
-
+  useTitle(data.title)
   return (
     <div className="flex flex-col w-9/12 mx-auto z-50 justify-center items-center mt-8">
       <div className="flex justify-center flex-col items-center text-center">

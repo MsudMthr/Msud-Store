@@ -1,29 +1,27 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 
-const theme = () => {
-  const themeHandler = () => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+import { Switch } from "@headlessui/react";
+import { themeContext } from "../App";
 
-    localStorage.theme = "light";
-
-    localStorage.theme = "dark";
-
-    localStorage.removeItem("theme");
-  };
-
+const Theme = () => {
+  const [enabled, setEnabled] = useState(false);
+  // const setTheme = useContext(themeContext);
+  
   return (
-    <div>
-      <input type={"radio"} onChange={themeHandler} />
-    </div>
+    <Switch
+      checked={enabled}
+      onChange={setEnabled}
+      className={`${
+        enabled ? "bg-gray-700" : "bg-amber-100"
+      } relative inline-flex items-center h-6 rounded-full w-11 transition-all delay-200`}
+    >
+      <span
+        className={`${
+          enabled ? "translate-x-6 bg-amber-100" : "translate-x-1 bg-gray-700"
+        } inline-block w-4 h-4 transform  rounded-full transition-all delay-200`}
+      />
+    </Switch>
   );
 };
 
-export default theme;
+export default Theme;

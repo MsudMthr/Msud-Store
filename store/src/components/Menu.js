@@ -1,7 +1,10 @@
-import React from "react";
+import React  from "react";
 import { Link } from "react-router-dom";
+import Theme from "./Theme";
+
 
 const Menu = ({ open }) => {
+  
   return (
     <div>
       <ul
@@ -38,12 +41,14 @@ const Menu = ({ open }) => {
         </li>
         <li>
           <Link
-            to={"/"}
+            to={"/SignUp"}
             className="mx-2 cursor-pointer hover:text-violet-600 transition-all md:border-b-2 px-2 py-2  md:my-4 md:py-2"
+            
           >
-            Women
+            SignUp
           </Link>
         </li>
+        <Theme />
       </ul>
     </div>
   );

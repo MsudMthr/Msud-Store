@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import queryString from "query-string";
-
+import queryString from "query-string";
+import useTitle from "../hooks/useTitle";
 import Card from "./Card";
 import LinkFilter from "./LinkFilter";
 import Loading from "./Loading";
@@ -10,12 +10,16 @@ export const dataContext = React.createContext();
 
 const Cards = ({ shopData, location, setShopData }) => {
   // const categoryQuery = queryString.parse(location.search);
-
+  const data = {
+    shopData : shopData,
+    category : queryString.parse(location.search),
+  }
+  useTitle('products')
   return (
     <>
       {/* {console.log(categoryQuery)}
       {console.log(categoryQuery.category)} */}
-      <dataContext.Provider value={shopData}>
+      <dataContext.Provider value={data}>
         <LinkFilter />
       </dataContext.Provider>
 

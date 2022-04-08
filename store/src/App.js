@@ -7,6 +7,12 @@ import Cards from "./components/Cards";
 import InfoCards from "./components/InfoCards";
 import HomePage from "./components/HomePage";
 import Loading from "./components/Loading";
+import Theme from "./components/Theme";
+import useLocalStorage from "./hooks/useLocalStorage";
+import react from "react";
+import Signup from "./components/Signup";
+
+export const themeContext = react.createContext();
 
 const initialState = {
   data: [],
@@ -33,6 +39,8 @@ const reducer = (state, action) => {
 const App = () => {
   const [shopData, dispatch] = useReducer(reducer, initialState);
 
+  // const [theme, setTheme] = useLocalStorage("theme", "light");
+
   useEffect(() => {
     axios
       .get("/products")
@@ -47,7 +55,9 @@ const App = () => {
       {console.log(shopData.data)}
       <div className="grid gap-4 grid-cols-1 md:grid-cols-12 md:grid-rows-[50px_minmax(100px,_1fr)">
         <div className="bg-white md:col-span-2 text-center row-span-1 sticky top-0 md:h-auto rounded-md shadow-lg">
-          <Navabr />
+          <themeContext.Provider value={shopData}>
+            <Navabr />
+          </themeContext.Provider> 
         </div>
         <div className="bg-white md:col-span-10 h-auto min-h-screen row-span-2 shadow-lg rounded-md">
           <Switch>
@@ -69,7 +79,7 @@ const App = () => {
                 <Cards {...props} dispatch={dispatch} shopData={shopData} />
               )}
             />
-            <Route path={"/Loading"} exact component={Loading} />
+            <Route path={"/SignUP"} exact component={Signup} />
             <Route path={"/"} exact component={HomePage} />
           </Switch>
         </div>
