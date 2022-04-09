@@ -12,7 +12,7 @@ const Cards = ({ shopData, location, setShopData }) => {
   // const categoryQuery = queryString.parse(location.search);
   const data = {
     shopData : shopData,
-    category : queryString.parse(location.search),
+    // category : queryString.parse(location.search),
   }
   useTitle('products')
   return (

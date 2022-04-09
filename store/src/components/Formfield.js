@@ -1,15 +1,8 @@
 import React from "react";
 
-const Formfield = ({
-  text,
-  type,
-  massage,
-  name,
-  value,
-  changeHandler,
-  touchHandler,
-  touch,
-}) => {
+const Formfield = ( props ) => {
+  const { text, type, massage, name, value, changeHandler, touchHandler, touch} = props;
+
   return (
     <div
       className={`flex my-1 ${

@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 
 import Navabr from "./components/Navabr";
@@ -11,6 +11,7 @@ import Theme from "./components/Theme";
 import useLocalStorage from "./hooks/useLocalStorage";
 import react from "react";
 import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 export const themeContext = react.createContext();
 
@@ -60,28 +61,19 @@ const App = () => {
           </themeContext.Provider> 
         </div>
         <div className="bg-white md:col-span-10 h-auto min-h-screen row-span-2 shadow-lg rounded-md">
-          <Switch>
-            <Route
-              path={`/products/:id`}
-              className="w-full"
-              render={(props) => (
+          <Routes>
+            <Route path={`/products/:id`}className="w-full"element={(props) => (
                 <InfoCards
                   {...props}
                   data={shopData.data.find(
                     (item) => item.id == props.match.params.id
-                  )}
-                />
-              )}
+                  )}/> )}
             />
-            <Route
-              path="/products"
-              render={(props) => (
-                <Cards {...props} dispatch={dispatch} shopData={shopData} />
-              )}
-            />
-            <Route path={"/SignUP"} exact component={Signup} />
-            <Route path={"/"} exact component={HomePage} />
-          </Switch>
+            <Route path="/Login" element={<Login />}/>
+            <Route path="/products"   element={<Cards  dispatch={dispatch} shopData={shopData} />} />
+            <Route path={"/SignUP"}  element={<Signup />} />
+            <Route path={"/"}  element={<HomePage />} />
+          </Routes>
         </div>
       </div>
     </div>

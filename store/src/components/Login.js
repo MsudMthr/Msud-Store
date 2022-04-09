@@ -7,13 +7,10 @@ import { toastHandler } from "./functions/toast";
 import { sendData } from "./functions/sendData";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Login = () => {
   const [data, setData] = useState({
-    name: "",
     email: "",
     password: "",
-    confirmPassword: "",
-    isAccept: false,
   });
 
   const [error, setError] = useState({});
@@ -21,7 +18,7 @@ const Signup = () => {
 
   useEffect(
     () => {
-      setError(validation(data, "signup"));
+      setError(validation(data));
     },
     [data],
     [touched]
@@ -39,14 +36,15 @@ const Signup = () => {
     setTouched({ ...touched, [event.target.name]: true });
   };
 
-   const submitHandler =async (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
     if (!Object.keys(error).length) {
       console.log(data);
-       toastHandler("success", "you sign success");
-        setTimeout(() => {
-           navigate("/products", { replace: true });
-        },3000)
+      sendData(data);
+      toastHandler("success", "you sign success");
+      setTimeout(() => {
+        navigate("/products", { replace: true });
+      }, 3000);
     } else {
       toastHandler("error", "invalid data!");
       setTouched({
@@ -66,17 +64,8 @@ const Signup = () => {
       onSubmit={submitHandler}
       className="flex flex-col h-screen justify-center items-center "
     >
-      <h2 className="font-bold text-xl text-blue-900 mb-4">SignUP</h2>
-      <Formfield
-        text="name"
-        type="text"
-        name="name"
-        value={data.name}
-        changeHandler={changeHandler}
-        touchHandler={touchHandler}
-        touch={touched.name}
-        massage={error.name}
-      />
+      <h2 className="font-bold text-xl text-blue-900 mb-4">Login</h2>
+
       <Formfield
         text="email"
         type="email"
@@ -97,39 +86,19 @@ const Signup = () => {
         touch={touched.password}
         massage={error.password}
       />
-      <Formfield
-        text="confirmPassword"
-        type="password"
-        name="confirmPassword"
-        value={data.confirmPassword}
-        changeHandler={changeHandler}
-        touchHandler={touchHandler}
-        touch={touched.confirmPassword}
-        massage={error.confirmPassword}
-      />
-      <Formfield
-        text="I Accept term of privacy and policy"
-        type="checkbox"
-        name="isAccept"
-        value={data.isAccept}
-        changeHandler={changeHandler}
-        touchHandler={touchHandler}
-        touch={touched.isAccept}
-        massage={error.isAccept}
-      />
+
       <div className="flex justify-between items-center w-52">
         <button
-          onClick={() => navigate("/login")}
+          onClick={() => navigate("/signup")}
           className="font-medium text-blue-500 text-lg  py-1 px-4 rounded-md  border-2 border-blue-200"
         >
-          Login
+          SignUP
         </button>
-
         <button
           type="submit"
           className="bg-blue-700 text-white py-2 px-4 rounded-md"
         >
-          SignUP
+          Login
         </button>
       </div>
       <ToastContainer />
@@ -137,4 +106,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
