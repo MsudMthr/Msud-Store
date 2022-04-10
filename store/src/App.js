@@ -6,12 +6,13 @@ import Navabr from "./components/Navabr";
 import Cards from "./components/Cards";
 import InfoCards from "./components/InfoCards";
 import HomePage from "./components/HomePage";
-import Loading from "./components/Loading";
-import Theme from "./components/Theme";
-import useLocalStorage from "./hooks/useLocalStorage";
+// import Loading from "./components/Loading";
+// import Theme from "./components/Theme";
+// import useLocalStorage from "./hooks/useLocalStorage";
 import react from "react";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+
 
 export const themeContext = react.createContext();
 
@@ -40,7 +41,6 @@ const reducer = (state, action) => {
 const App = () => {
   const [shopData, dispatch] = useReducer(reducer, initialState);
 
-  // const [theme, setTheme] = useLocalStorage("theme", "light");
 
   useEffect(() => {
     axios
@@ -52,23 +52,23 @@ const App = () => {
   }, []);
 
   return (
-    <div className="container mx-auto xl:max-w-screen-xl">
+    <div className="container mx-auto xl:max-w-screen-xl dark:bg-zinc-800 transition-all duration-300">
       {console.log(shopData.data)}
       <div className="grid gap-4 grid-cols-1 md:grid-cols-12 md:grid-rows-[50px_minmax(100px,_1fr)">
-        <div className="bg-white md:col-span-2 text-center row-span-1 sticky top-0 md:h-auto rounded-md shadow-lg">
+        <div className="bg-white dark:bg-slate-600 md:col-span-2  text-center row-span-1 sticky top-0 md:h-auto rounded-md shadow-lg">
           <themeContext.Provider value={shopData}>
             <Navabr />
           </themeContext.Provider> 
         </div>
-        <div className="bg-white md:col-span-10 h-auto min-h-screen row-span-2 shadow-lg rounded-md">
+        <div className="bg-white md:col-span-10 h-auto min-h-screen row-span-2 shadow-lg rounded-md transition-all duration-300">
           <Routes>
-            <Route path={`/products/:id`}className="w-full"element={(props) => (
+            {/* <Route path={`/products/:id`}className="w-full" element={(props) => (
                 <InfoCards
                   {...props}
                   data={shopData.data.find(
                     (item) => item.id == props.match.params.id
                   )}/> )}
-            />
+            /> */}
             <Route path="/Login" element={<Login />}/>
             <Route path="/products"   element={<Cards  dispatch={dispatch} shopData={shopData} />} />
             <Route path={"/SignUP"}  element={<Signup />} />

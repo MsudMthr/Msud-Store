@@ -1,26 +1,48 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 import { Switch } from "@headlessui/react";
-import { themeContext } from "../App";
+import useDarkMode from "../hooks/useDarkMode";
 
 const Theme = () => {
-  const [enabled, setEnabled] = useState(false);
-  // const setTheme = useContext(themeContext);
-  
+  const [colorTheme, setTheme] = useDarkMode();
   return (
-    <Switch
-      checked={enabled}
-      onChange={setEnabled}
-      className={`${
-        enabled ? "bg-gray-700" : "bg-amber-100"
-      } relative inline-flex items-center h-6 rounded-full w-11 transition-all delay-200`}
-    >
-      <span
-        className={`${
-          enabled ? "translate-x-6 bg-amber-100" : "translate-x-1 bg-gray-700"
-        } inline-block w-4 h-4 transform  rounded-full transition-all delay-200`}
-      />
-    </Switch>
+    <div>
+      {
+        <span onClick={() => setTheme(colorTheme)} className={`w-10 h-10 text-lg transition-all delay-150 rounded-full cursor-pointer flex justify-center items-center`}>
+          {colorTheme === "dark" ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-h-7 bg-gray-600 text-yellow-200 p-1 rounded-full"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-h-7 text-gray-600 bg-yellow-100 p-1 rounded-full"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+          )}
+        </span>
+      }
+    </div>
   );
 };
 
