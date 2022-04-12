@@ -6,8 +6,8 @@ import image from "../images/Free_Vector___Dressing_room_concept_illustration-re
 const HomePage = () => {
   useTitle("msud store");
   return (
-    <div className="flex md:flex-row flex-col items-center h-screen bg-gradient-to-r from-lime-100 via-yellow-100 to-cyan-100 dark:from-slate-800 dark:via-neutral-800 dark:to-gray-800  transition-all duration-300 ">
-      <div className="flex flex-col w-screen items-center md:items-start md:justify-evenly ">
+    <div className="flex md:flex-row flex-col justify-evenly items-center h-screen bg-gradient-to-r from-lime-100 via-yellow-100 to-cyan-100 dark:from-slate-800 dark:via-neutral-800 dark:to-gray-800  transition-all duration-300 ">
+      <div className="flex flex-col w-screen max-w-lg items-center md:items-start md:justify-evenly ">
         <div className="flex flex-col">
           <h1 className=" md:ml-4 font-bold text-6xl md:text-8xl dark:text-white transition-all duration-300 ">MSUD</h1>
         </div>
