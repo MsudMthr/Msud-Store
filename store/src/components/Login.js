@@ -62,9 +62,9 @@ const Login = () => {
   return (
     <form
       onSubmit={submitHandler}
-      className="flex flex-col h-screen justify-center items-center "
+      className="flex flex-col h-screen justify-center items-center transition-all delay-[50ms] dark:bg-slate-800"
     >
-      <h2 className="font-bold text-xl text-blue-900 mb-4">Login</h2>
+      <h2 className="font-bold text-xl text-blue-900 mb-4 dark:text-blue-200">Login</h2>
 
       <Formfield
       
@@ -88,16 +88,16 @@ const Login = () => {
         massage={error.password}
       />
 
-      <div className="flex justify-between items-center w-52">
+      <div className="flex justify-between items-center w-52 my-4">
         <button
           onClick={() => navigate("/signup")}
-          className="font-medium text-blue-500 text-lg  py-1 px-4 rounded-md  border-2 border-blue-200"
+          className="font-medium text-blue-500 text-lg  py-1 px-4 rounded-md  border-2 border-blue-200 dark:text-lime-400"
         >
           SignUP
         </button>
         <button
           type="submit"
-          className="bg-blue-700 text-white py-2 px-4 rounded-md"
+          className="bg-blue-700 text-white py-2 px-4 rounded-md dark:bg-cyan-800"
         >
           Login
         </button>

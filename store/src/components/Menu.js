@@ -7,8 +7,8 @@ const Menu = ({ open }) => {
     <div>
       <ul
         open={open}
-        className={`transition-all duration-300 rounded-lg  ease-in-out justify-evenly md:flex-col md:h-48 items-center sm:static sm:translate-x-0 sm:h-10   sm:flex sm:flex-row bg-slate-200 sm:bg-white fixed top-0 right-0 dark:bg-slate-800
-        dark:text-white${
+        className={`transition-all duration-300 rounded-lg  ease-in-out justify-evenly md:flex-col md:h-48 items-center sm:static sm:translate-x-0 sm:h-10   sm:flex sm:flex-row bg-slate-200 sm:bg-white fixed top-0 right-0 dark:bg-slate-800 dark:text-white
+        ${
           open
             ? "flex flex-col z-10  h-screen translate-x-0"
             : "  translate-x-[1000%]"

@@ -7,6 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 
 axios.defaults.baseURL = 'https://fakestoreapi.com'
 
+
+
 ReactDOM.render(
   <BrowserRouter>
     <App />

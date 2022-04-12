@@ -14,7 +14,7 @@ const LinkFilter = () => {
   };
   return (
     <div
-      className="hidden sm:flex sm:justify-evenly py-2 sticky top-0 bg-white shadow-md rounded-xl"
+      className="hidden sm:flex sm:justify-evenly py-2 sticky top-0 transition-all  bg-white dark:bg-slate-800 shadow-md rounded-sm"
       ref={LinkRef}
     >
       <Link

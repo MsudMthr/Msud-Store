@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { Switch } from "@headlessui/react";
 import useDarkMode from "../hooks/useDarkMode";
 
 const Theme = () => {

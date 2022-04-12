@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ name, image, cost, rate, count }) => {
+import { shortTitle } from "../../helper/function";
+
+const Card = ({ name, image, cost, rate, count , id }) => {
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col justify-between h-full ">
       <img
         src={image}
         alt="dress "
-        className="rounded-sm w-11/12 sm:w-full md:w-44 h-40"
+        className="rounded-sm w-11/12 sm:w-full md:w-full h-40 dark:shadow-2xl dark:shadow-slate-300"
       />
-      <h5 className="font-semibold text-sm  p-2">{name}</h5>
+      <h5 className="font-bold text-sm  p-2">{shortTitle(name)}</h5>
       <div className="flex flex-col  ">
         <p className="font-medium inline p-2 self-end">{cost}$</p>
 
@@ -19,11 +21,16 @@ const Card = ({ name, image, cost, rate, count }) => {
         </p>
       </div>
       <div className="flex justify-between items-center my-2 p-1">
-        <Link className="bg-blue-300 py-1 px-3 rounded-md" to={"/products/:id"}>
-          <button>Details</button>
+        <Link
+          className="ml-2 text-lg text-gray-800 dark:text-red-100 "
+          to={`/products/${id}`}
+        >
+          Details
         </Link>
         <div className="flex justify-between">
-          <button className="bg-emerald-700 py-1 px-3 rounded-md font-semibold   ">Add to cart</button>
+          <button className="bg-blue-700 py-1 px-3 rounded-md font-semibold text-white dark:bg-blue-200 dark:text-black  ">
+            Add to cart
+          </button>
           {/* <button className="bg-">
             <svg
               xmlns="http://www.w3.org/2000/svg"
