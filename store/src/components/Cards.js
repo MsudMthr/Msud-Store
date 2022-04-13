@@ -26,12 +26,7 @@ const Cards = () => {
               className={` w-6/12 sm:w-48  mx-auto md:w-56 flex flex-col justify-between  rounded-sm border m-2 overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-white dark:hover:shadow-md p-2 transition-all delay-100 dark:bg-slate-600`}
             >
               <Card
-                image={data.image}
-                name={data.title}
-                rate={data.rating.rate}
-                cost={data.price}
-                count={data.rating.count}
-                id = {data.id}
+                productData = {data}
               />
             </div>
           ))}
