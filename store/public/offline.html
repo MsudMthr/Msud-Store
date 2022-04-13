@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="offlineStyle.css" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(
+          to right,
+          rgb(132, 182, 201),
+          rgb(86, 214, 216),
+          rgb(79, 135, 219)
+        );
+      }
+
+      .content-container {
+        max-width: 32rem;
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container-title {
+        font-size: larger;
+        color: #000;
+      }
+
+      .text-container {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+        gap: 5px;
+      }
+
+      .text-container h4 {
+        font-weight: 700;
+        font-size: large;
+      }
+
+      .text-container p {
+        font-size: medium;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        <h1 class="container-title">you're offline please came back online</h1>
+        <div class="text-container">
+          <h4 class="dark:text-white font-semibold">What is Msud store?</h4>
+          <p>
+            msud store is online shop and made with react.js and tailwind css   
+            and this site is a
+            <abbr title="Single Page Application">SPA</abbr> and
+            <abbr title="Progressive Web App">PWA</abbr>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
