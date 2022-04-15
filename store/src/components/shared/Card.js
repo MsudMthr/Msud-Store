@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import {
-  shortTitle,
-  isInCart,
-  quantityCount,
-  findIndex,
-} from "../../helper/function";
+//functions
+import { shortTitle, isInCart, quantityCount } from "../../helper/function";
+//context
 import { cartContext } from "../../services/CartContextProvider";
 
 const Card = ({ productData }) => {
@@ -39,32 +36,20 @@ const Card = ({ productData }) => {
         </Link>
         <div className="flex justify-between">
           {isInCart(state, id) ? (
-            <div className="flex gap-2">
-              {quantityCount(state, id) >= 1 ? (
+            <div className="flex items-center gap-2">
+              {quantityCount(state, id) > 1 && (
                 <button
-                  className="bg-blue-400 p-2 rounded"
+                  className="bg-blue-400 rounded px-2 flex justify-center items-center font-bold text-lg  "
                   onClick={() =>
                     dispatch({ type: "DECREASE", payload: productData })
                   }
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M20 12H4"
-                    />
-                  </svg>
+                  -
                 </button>
-              ) : (
+              )}
+              {quantityCount(state, id) === 1 && (
                 <button
-                  className="bg-blue-400 p-2 rounded"
+                  className="bg-blue-400 rounded px-2  flex justify-center items-center py-0.5  "
                   onClick={() =>
                     dispatch({ type: "REMOVE_ITEM", payload: productData })
                   }
@@ -86,30 +71,17 @@ const Card = ({ productData }) => {
                 </button>
               )}
               <button
-                className="bg-blue-400 p-2 rounded"
+                className="bg-blue-400 rounded px-2 flex justify-center items-center font-bold text-lg  "
                 onClick={() =>
                   dispatch({ type: "INCREASE", payload: productData })
                 }
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 4v16m8-8H4"
-                  />
-                </svg>
+                +
               </button>
             </div>
           ) : (
             <button
-              className="bg-blue-400 py-2 px-4 font-semibold rounded"
+              className="bg-blue-400 px-2 py-0.5 rounded font-bold"
               onClick={() =>
                 dispatch({ type: "ADD_ITEM", payload: productData })
               }

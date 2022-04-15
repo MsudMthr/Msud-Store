@@ -13,6 +13,7 @@ import DetailProduct from "./components/DetailProduct";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
+import Cart from "./components/Cart";
 // import useLocalStorage from "./hooks/useLocalStorage";
 
 
@@ -35,7 +36,7 @@ const App = () => {
         <div className="w-screen h-full dark:bg-zinc-800 transition-all ease-in-out">
           <div className="container mx-auto xl:max-w-screen-2xl dark:bg-zinc-800 transition-all duration-300">
             <div className="grid gap-4 grid-cols-1 md:grid-cols-12 md:grid-rows-[50px_minmax(100px,_1fr)">
-              <div className="bg-white dark:bg-slate-600 md:col-span-2  text-center row-span-1 sticky top-0 md:h-auto rounded-md shadow-lg">
+              <div className="bg-white dark:bg-slate-600 md:col-span-2  text-center row-span-1 sticky top-0  rounded-md shadow-lg">
                 <Navabr />
               </div>
               <div className="bg-white md:col-span-10 h-auto min-h-screen row-span-2 shadow-lg rounded-md transition-all duration-300">
@@ -46,6 +47,7 @@ const App = () => {
                   <Route path="/notfound" element={<NotFound />} />
                   <Route path="/*" element={<Navigate to={"/notfound"} />} />
                   <Route path={"/SignUP"} element={<Signup />} />
+                  <Route path="/cart" element={<Cart />}/>
                   <Route path={"/"} element={<HomePage />} />
                 </Routes>
               </div>
