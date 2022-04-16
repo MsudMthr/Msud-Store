@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { shortTitle } from "../../helper/function";
+import { quantityCount, shortTitle } from "../../helper/function";
 import { cartContext } from "../../services/CartContextProvider";
 
 const CartItems = ({ data }) => {
@@ -37,6 +37,7 @@ const CartItems = ({ data }) => {
             </svg>
           </button>
         )}
+        
         <button className="bg-blue-400 px-2 rounded flex justify-center items-center select-none font-bold text-xl" onClick={() => dispatch({type:"INCREASE" , payload:data})}>+</button>
       </div>
     </div>

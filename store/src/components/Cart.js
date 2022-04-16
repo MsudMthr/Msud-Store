@@ -40,7 +40,7 @@ const Cart = () => {
         </div>
       )}
       {!state.checkOut && state.itemCounter !== 0 && (
-        <div className=" md:w-4/12 w-11/12 flex flex-col justify-around  md:h-80 h-40 md:sticky md:top-2 md:right-1 my-2  md:border-2 mx-auto  px-2 rounded-md">
+        <div className=" md:w-4/12 w-11/12 flex flex-col justify-around  md:h-80 h-40 md:sticky md:top-2 md:right-1 my-2  border mx-auto  px-2 rounded-md">
           <h1 className="text-center my-2 font-bold text-lg">Cart</h1>
           <div className="flex flex-col justify-around ">
             <p>

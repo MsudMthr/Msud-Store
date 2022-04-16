@@ -24,7 +24,7 @@ const DetailProduct = () => {
 
   console.log(product);
   return (
-    <div className="flex flex-col  md:flex-row justify-center py-12 px-8  items-center dark:bg-slate-800 dark:text-white">
+    <div className="flex flex-col min-h-screen md:flex-row justify-center py-12 px-8  items-center dark:bg-slate-800 dark:text-white">
       <img
         loading="lazy"
         src={image}
@@ -61,7 +61,7 @@ const DetailProduct = () => {
 
             <div className="flex justify-between">
               {isInCart(state, id) ? (
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-center">
                   {quantityCount(state, id) > 1 ? (
                     <button
                       className="bg-blue-400 p-2 rounded"
@@ -109,6 +109,12 @@ const DetailProduct = () => {
                       </svg>
                     </button>
                   )}
+                  {quantityCount(state, id) > 0 && (
+                    <p className="font-bold dark:text-lime-200">
+                      {quantityCount(state, id)}
+                    </p>
+                  )}
+
                   <button
                     className="bg-blue-400 p-2 rounded"
                     onClick={() => {

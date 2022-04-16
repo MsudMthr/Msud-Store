@@ -11,7 +11,7 @@ const Card = ({ productData }) => {
   const { state, dispatch } = useContext(cartContext);
 
   return (
-    <div className="flex flex-col justify-between h-full ">
+    <div className="flex flex-col justify-between h-full dark:bg-slate-800 ">
       <img
         src={image}
         alt="dress "
@@ -70,6 +70,12 @@ const Card = ({ productData }) => {
                   </svg>
                 </button>
               )}
+              {quantityCount(state, id) > 0 && (
+                <p className="font-bold dark:text-lime-200">
+                  {quantityCount(state, id)}
+                </p>
+              )}
+
               <button
                 className="bg-blue-400 rounded px-2 flex justify-center items-center font-bold text-lg  "
                 onClick={() =>

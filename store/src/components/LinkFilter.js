@@ -52,7 +52,7 @@ const LinkFilter = () => {
       >
         Women
       </Link>
-      <Search />
+      {/* <Search /> */}
     </div>
   );
 };
