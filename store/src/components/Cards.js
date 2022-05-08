@@ -1,33 +1,43 @@
-import React, { Suspense, useContext } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 
 import { productContext } from "../services/ProductContextProvider";
-
+import queryString from "query-string";
 
 import useTitle from "../hooks/useTitle";
 import LinkFilter from "./LinkFilter";
 import Loading from "./Loading";
+
 const Card = React.lazy(() => import("./shared/Card"));
 
-export const dataContext = React.createContext();
+// export const dataContext = React.createContext();
 
 const Cards = () => {
   useTitle("products");
+  const [path, setPath] = useState("");
+  const { products, searchText, setProducts } = useContext(productContext);
+  console.log(searchText);
+  const searchProducts = products.filter((item) =>
+    item.title.toLowerCase().includes(searchText.toLowerCase())
+  );
 
-  const products = useContext(productContext);
+  const filterCategory = (catItem) => {
+    const result = products.filter((product) => product.category === catItem);
+    return setProducts(result);
+  };
+  console.log(path);
+
   return (
     <>
-      <LinkFilter />
+      <LinkFilter setPath={setPath} filterCategory={filterCategory} />
 
       <Suspense fallback={<Loading />}>
         <div className="flex flex-wrap justify-center dark:bg-slate-800 ">
-          {products.map((data) => (
+          {searchProducts.map((data) => (
             <div
               key={data.id}
               className={` w-6/12 sm:w-48  mx-auto md:w-56 flex flex-col justify-between  rounded-sm border m-2 overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-white dark:hover:shadow-md p-2 transition-all delay-100 dark:bg-slate-600`}
             >
-              <Card
-                productData = {data}
-              />
+              <Card productData={data} />
             </div>
           ))}
         </div>

@@ -13,9 +13,9 @@ import DetailProduct from "./components/DetailProduct";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
+import Cart from "./components/Cart";
+import Favorite from "./components/Favorite";
 // import useLocalStorage from "./hooks/useLocalStorage";
-
-
 
 const App = () => {
   // const [shopData, dispatch] = useReducer(reducer, initialState);
@@ -47,6 +47,8 @@ const App = () => {
                   <Route path="/*" element={<Navigate to={"/notfound"} />} />
                   <Route path={"/SignUP"} element={<Signup />} />
                   <Route path={"/"} element={<HomePage />} />
+                  <Route path="/Cart" element={<Cart />} />
+                  <Route path="/Favorite" element={<Favorite />} />
                 </Routes>
               </div>
             </div>

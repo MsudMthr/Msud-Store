@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
-import { dataContext } from "./Cards";
+
+import {productContext} from '../services/ProductContextProvider'
+
 const Search = () => {
   const [showInput, setShowInput] = useState(false);
-  const [searchText, setSearchText] = useState("");
-  const data = useContext(dataContext);
+  const { searchText, setSearchText } = useContext(productContext);
   const isShow = () => {
     setShowInput(!showInput);
   };
@@ -15,7 +16,9 @@ const Search = () => {
     <div className="flex justify-center items-center ">
       <button
         onClick={isShow}
-        className={`z-10 hover:scale-125 transition-all ease-in-out duration-700  ${showInput ? "hidden" : "flex"}`}
+        className={`z-10 hover:scale-125 transition-all ease-in-out duration-700  ${
+          showInput ? "hidden" : "flex"
+        }`}
       >
         <svg
           className="w-6 h-6 text-zinc-800 dark:text-white"
@@ -36,6 +39,7 @@ const Search = () => {
         typeof="search"
         placeholder="search"
         onChange={handleChange}
+        value={searchText}
         className={`z-0 absolute w-full  left-0 top-0 h-full text-lg dark:text-white dark:bg-slate-800 outline-none  overflow-hidden rounded-md px-4 placeholder:text-xl shadow-lg transition ease-in duration-300 ${
           showInput ? "flex  opacity-100" : "hidden opacity-0"
         } `}
