@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 //hooks
 import { useParams } from "react-router-dom";
@@ -14,14 +14,12 @@ import { isFavorite, isInCart, quantityCount } from "../helper/function";
 const DetailProduct = () => {
   const param = useParams();
   const data = useContext(productContext);
-  const product = data[param.id - 1];
+  const product = data.products[param.id - 1];
   const { state, dispatch } = useContext(cartContext);
 
   const { image, title, description, rating, price, category, id } = product;
-
   useTitle(`${title}`);
 
-  console.log(state.favorite);
   return (
     <div className="flex flex-col  md:flex-row justify-center py-12 px-8  items-center dark:bg-slate-800 dark:text-white">
       <img
@@ -50,11 +48,10 @@ const DetailProduct = () => {
               <button
                 onClick={() => {
                   dispatch({ type: "LIKE", payload: product });
-                  
                 }}
                 className="text-red-500 transition-all"
               >
-                {isFavorite(state , product.id) ? (
+                {isFavorite(state, product.id) ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"

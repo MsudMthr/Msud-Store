@@ -111,7 +111,7 @@ const Menu = ({ open }) => {
             <p className="absolute top-0 dark:text-black font-bold shadow-sm shadow-amber-300 rounded-full px-1  right-0 bg-amber-300 text-xs ">
               {state.itemCounter}
             </p>
-            {console.log(state)}
+            
           </Link>
         </li>
         <Theme />

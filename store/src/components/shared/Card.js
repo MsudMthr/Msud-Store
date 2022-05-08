@@ -15,7 +15,7 @@ const Card = ({ productData }) => {
       <img
         src={image}
         alt="dress "
-        className="rounded-sm w-11/12 sm:w-full md:w-full h-40 dark:shadow-2xl dark:shadow-slate-300"
+        className="rounded-md w-56 sm:w-full md:w-full  h-56 mx-auto dark:shadow-2xl dark:shadow-slate-300"
       />
       <h5 className="font-bold text-sm  p-2">{shortTitle(title)}</h5>
       <div className="flex flex-col  ">
@@ -65,9 +65,9 @@ const Card = ({ productData }) => {
           </span>{" "}
         </p>
       </div>
-      <div className="flex justify-between items-center my-2 p-1">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-2 my-2 p-1">
         <Link
-          className="ml-2 text-lg text-gray-800 dark:text-red-100 "
+          className=" text-lg text-gray-800 dark:text-fuchsia-900 font-semibold bg-lime-50 px-2 py-1 rounded "
           to={`/products/${id}`}
         >
           Details
