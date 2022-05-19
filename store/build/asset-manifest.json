@@ -1,16 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.9d57b24a.css",
-    "main.js": "/static/js/main.090ac6f2.js",
-    "static/js/90.47c5d287.chunk.js": "/static/js/90.47c5d287.chunk.js",
+    "main.css": "/static/css/main.e778a7db.css",
+    "main.js": "/static/js/main.28301946.js",
     "static/media/Free_Vector___Dressing_room_concept_illustration-removebg-preview.png": "/static/media/Free_Vector___Dressing_room_concept_illustration-removebg-preview.3c1d48771e07f5e47380.png",
     "index.html": "/index.html",
-    "main.9d57b24a.css.map": "/static/css/main.9d57b24a.css.map",
-    "main.090ac6f2.js.map": "/static/js/main.090ac6f2.js.map",
-    "90.47c5d287.chunk.js.map": "/static/js/90.47c5d287.chunk.js.map"
+    "main.e778a7db.css.map": "/static/css/main.e778a7db.css.map",
+    "main.28301946.js.map": "/static/js/main.28301946.js.map"
   },
   "entrypoints": [
-    "static/css/main.9d57b24a.css",
-    "static/js/main.090ac6f2.js"
+    "static/css/main.e778a7db.css",
+    "static/js/main.28301946.js"
   ]
 }

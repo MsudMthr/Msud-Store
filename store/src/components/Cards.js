@@ -1,11 +1,12 @@
 import React, { Suspense, useContext, useEffect, useState } from "react";
 
 import { productContext } from "../services/ProductContextProvider";
+import { cartContext } from "../services/CartContextProvider";
 import queryString from "query-string";
 
 import useTitle from "../hooks/useTitle";
-import LinkFilter from "./LinkFilter";
 import Loading from "./Loading";
+import FilterProducts from "./FilterProducts";
 
 const Card = React.lazy(() => import("./shared/Card"));
 
@@ -13,26 +14,38 @@ const Card = React.lazy(() => import("./shared/Card"));
 
 const Cards = () => {
   useTitle("products");
-  const [path, setPath] = useState("");
-  const { products, searchText, setProducts } = useContext(productContext);
-  console.log(searchText);
-  const searchProducts = products.filter((item) =>
-    item.title.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const [category, setCategory] = useState("");
 
-  const filterCategory = (catItem) => {
-    const result = products.filter((product) => product.category === catItem);
-    return setProducts(result);
+  const { products, searchText, setProducts } = useContext(productContext);
+  const { state, dispatch } = useContext(cartContext);
+
+  const filterProducts = () => {
+    if (category.category === "All Products") {
+      const searchProducts = products.filter((item) =>
+        item.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+      return searchProducts;
+    } else {
+      const searchProducts = products.filter((item) =>
+        item.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+      const searchFilterProducts = searchProducts.filter(
+        (item) => item.category === category.category
+      );
+      return searchFilterProducts;
+    }
   };
-  console.log(path);
+
+  const product = filterProducts();
+
+  console.log(product);
 
   return (
     <>
-      <LinkFilter setPath={setPath} filterCategory={filterCategory} />
-
+      <FilterProducts setCategory={setCategory} />
       <Suspense fallback={<Loading />}>
         <div className="flex flex-wrap justify-center dark:bg-slate-800 ">
-          {searchProducts.map((data) => (
+          {product.map((data) => (
             <div
               key={data.id}
               className={` w-6/12 sm:w-48  mx-auto md:w-56 flex flex-col justify-between  rounded-sm border m-2 overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-white dark:hover:shadow-md p-2 transition-all delay-100 dark:bg-slate-600`}

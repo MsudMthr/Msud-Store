@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-import {productContext} from '../services/ProductContextProvider'
+import { productContext } from "../services/ProductContextProvider";
 
 const Search = () => {
   const [showInput, setShowInput] = useState(false);
@@ -36,11 +36,11 @@ const Search = () => {
         </svg>
       </button>
       <input
-        typeof="search"
+        type="search"
         placeholder="search"
         onChange={handleChange}
         value={searchText}
-        className={`z-0 absolute w-full  left-0 top-0 h-full text-lg dark:text-white dark:bg-slate-800 outline-none  overflow-hidden rounded-md px-4 placeholder:text-xl shadow-lg transition ease-in duration-300 ${
+        className={`z-0 absolute w-full  left-0 top-0 h-full text-lg capitalize dark:text-white dark:bg-slate-800 outline-none  overflow-hidden rounded-md px-4 placeholder:text-xl shadow-lg transition ease-in duration-300 ${
           showInput ? "flex  opacity-100" : "hidden opacity-0"
         } `}
       />
