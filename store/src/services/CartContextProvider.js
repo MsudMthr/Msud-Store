@@ -7,7 +7,6 @@ const initialState = {
   total: 0,
   checkOut: false,
 };
-// cons ole.log(initialState.favorite);
 
 const sumItems = (state) => {
   const itemCounter = state.reduce((total, item) => total + item.quantity, 0);
@@ -101,7 +100,6 @@ const cartReducer = (state, action) => {
       return state;
   }
 };
-console.log(initialState.favorite);
 export const cartContext = createContext();
 
 const CartContextProvider = ({ children }) => {

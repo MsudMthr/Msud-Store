@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
+//router-dom
 import { Link } from "react-router-dom";
-
+//functions
 import { isFavorite } from "../../helper/function";
-
 import { shortTitle, isInCart, quantityCount } from "../../helper/function";
+//context
 import { cartContext } from "../../services/CartContextProvider";
 
 const Card = ({ productData }) => {
@@ -65,9 +66,9 @@ const Card = ({ productData }) => {
           </span>{" "}
         </p>
       </div>
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-2 my-2 p-1">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-2 my-2 p-1">
         <Link
-          className=" text-lg text-gray-800 dark:text-fuchsia-900 font-semibold bg-lime-50 px-2 py-1 rounded "
+          className=" text-lg text-gray-800 dark:text-fuchsia-900 font-semibold bg-lime-200 hover:bg-orange-200 transition-all px-2 py-1 rounded "
           to={`/products/${id}`}
         >
           Details
@@ -78,7 +79,7 @@ const Card = ({ productData }) => {
             <div className="flex gap-2 items-center">
               {quantityCount(state, id) > 1 ? (
                 <button
-                  className="bg-blue-400 p-2 rounded"
+                  className="bg-blue-400  p-2 rounded"
                   onClick={() =>
                     dispatch({ type: "DECREASE", payload: productData })
                   }
@@ -148,7 +149,7 @@ const Card = ({ productData }) => {
             </div>
           ) : (
             <button
-              className="bg-blue-400 py-2 px-4 font-semibold rounded"
+              className="bg-blue-400 py-2 px-4 font-semibold rounded hover:bg-blue-600 transition-all"
               onClick={() =>
                 dispatch({ type: "ADD_ITEM", payload: productData })
               }

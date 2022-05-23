@@ -16,7 +16,7 @@ export default function CategoryFilter({ setCategory }) {
     setCategory(selected);
   }, [selected]);
   return (
-    <div className="relative top-0 w-72 ">
+    <div className="relative top-0 w-72 -z-10">
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative mt-1 ">
           <Listbox.Button className="relative w-full cursor-default dark:bg-slate-800 dark:text-white rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
@@ -40,7 +40,9 @@ export default function CategoryFilter({ setCategory }) {
                   key={personIdx}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? "bg-amber-100 text-amber-900 " : "text-gray-900 dark:text-white"
+                      active
+                        ? "bg-amber-100 text-amber-900 "
+                        : "text-gray-900 dark:text-white"
                     }`
                   }
                   value={person}
