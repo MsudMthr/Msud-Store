@@ -38,11 +38,11 @@ const Cards = () => {
     <section >
       <FilterProducts setCategory={setCategory} />
       <Suspense fallback={<Loading />}>
-        <div className="flex flex-wrap justify-center overflow-hidden dark:bg-slate-800 ">
+        <div className="flex flex-wrap justify-center overflow-hidden min-h-screen dark:bg-slate-800 ">
           {product.map((data) => (
             <div
               key={data.id}
-              className={` w-6/12 sm:w-48  md:w-56 flex flex-col justify-between  rounded-sm border m-2 overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-white dark:hover:shadow-md p-2 transition-all delay-100 dark:bg-slate-600`}
+              className={` w-6/12 sm:w-48 max-h-[450px]  md:w-56 flex flex-col justify-between  rounded-sm border m-2 overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-white dark:hover:shadow-md p-2 transition-all delay-100 dark:bg-slate-600`}
             >
               <Card productData={data} />
             </div>

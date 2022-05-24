@@ -28,7 +28,7 @@ const DetailProduct = () => {
         setProduct(response.data);
         setIsLoading(false);
       });
-  }, []);
+  }, [param.id , ]);
   const { image, title, description, rating, price, category, id } = product;
   useTitle(`${title}`);
 
