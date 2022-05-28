@@ -4,7 +4,7 @@ const initialState = {
   error: "",
 };
 
-export const productReducer = (state = initialState, action) => {
+const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_PRODUCTS_REQUEST":
       return {
@@ -27,3 +27,5 @@ export const productReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default productReducer;

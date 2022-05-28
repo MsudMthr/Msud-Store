@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 //router-dom
 import { Link } from "react-router-dom";
 //functions
 import { isFavorite } from "../../helper/function";
-import { shortTitle, isInCart, quantityCount } from "../../helper/function";
-//context
-import { cartContext } from "../../services/CartContextProvider";
-import CartButton from './CartButton';
+import { shortTitle } from "../../helper/function";
+
+//components
+import CartButton from "./CartButton";
+import LikeButton from './LikeButton';
 
 const Card = ({ productData }) => {
   const { title, image, price, rating, id } = productData;
-  const { state, dispatch } = useContext(cartContext);
 
   return (
     <div className="flex flex-col justify-between h-full ">
@@ -22,42 +22,7 @@ const Card = ({ productData }) => {
       <h5 className="font-bold text-sm  p-2">{shortTitle(title)}</h5>
       <div className="flex flex-col  ">
         <div className="flex justify-between">
-          <button
-            onClick={() => {
-              dispatch({ type: "LIKE", payload: productData });
-            }}
-            className="text-red-500 transition-all"
-          >
-            {isFavorite(state, productData.id) ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                />
-              </svg>
-            )}
-          </button>
+         <LikeButton product={productData}/> 
           <p className="font-medium inline p-2 self-end">{price}$</p>
         </div>
         <p className="text-sm font-semibold">
@@ -74,8 +39,7 @@ const Card = ({ productData }) => {
         >
           Details
         </Link>
-        <CartButton product={productData} id={id}/>
-       
+        <CartButton product={productData} id={id} />
       </div>
     </div>
   );

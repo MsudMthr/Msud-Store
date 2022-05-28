@@ -1,19 +1,26 @@
-import React, { useContext } from "react";
+import React from "react";
 import { isFavorite, isInCart, quantityCount } from "../../helper/function";
-import { cartContext } from "../../services/CartContextProvider";
 
-const LikeButton = ({product}) => {
-  const { state, dispatch } = useContext(cartContext);
+import { useSelector, useDispatch } from "react-redux";
 
+// import { cartContext } from "../../services/CartContextProvider";
+import { likeProduct } from "./../../redux/likeProducts/likeProductAction";
+
+const LikeButton = ({ product }) => {
+  // const { state, dispatch } = useContext(cartContext);
+
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites);
+  console.log(favorites);
   return (
     <div>
       <button
         onClick={() => {
-          dispatch({ type: "LIKE", payload: product });
+          dispatch(likeProduct(product));
         }}
         className="text-red-500 transition-all"
       >
-        {isFavorite(state, product.id) ? (
+        {isFavorite(favorites, product.id) ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"

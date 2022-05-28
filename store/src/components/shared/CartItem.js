@@ -1,20 +1,24 @@
-import React, { useContext } from "react";
+import React from "react";
+
+import { useSelector , useDispatch } from "react-redux";
+
 import { quantityCount ,shortTitle } from "../../helper/function";
 
-import { cartContext } from "../../services/CartContextProvider";
 
 const CartItem = ({ data }) => {
-  const {state, dispatch } = useContext(cartContext);
+
+  const dispatch = useDispatch()
+  const cart = useSelector(state => state.cart) 
 
   return (
     <div className="flex justify-between  items-center gap-1 m-2 border rounded p-1 dark:bg-slate-400 hover:shadow-lg dark:hover:shadow-md dark:hover:shadow-white dark:text-white transition-all">
       <img src={data.image} alt={data.title} className="w-24 max-h-24 h-24" />
       <p className="font-semibold">{shortTitle(data.title)}</p>
-      <p className="font-medium">${data.price.toLocaleString()}</p>
+      <p className="font-medium bg-red-50 rounded p-1">${data.price.toLocaleString()}</p>
       <p className="font-medium bg-yellow-300 px-1 rounded">{data.quantity}</p>
       <div>
         <div className="flex gap-1 items-center">
-          {quantityCount(state, data.id) > 1 ? (
+          {quantityCount(cart, data.id) > 1 ? (
             <button
               className="bg-blue-400 p-1 rounded"
               onClick={() =>

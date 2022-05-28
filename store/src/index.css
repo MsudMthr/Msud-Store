@@ -6,5 +6,11 @@ body {
   background-color: rgb(238, 238, 238);
 }
 
+.emptyCart {
+  background: url("./images/emptyCart.png") no-repeat center;
+  background-size: cover; 
+  height: 200px;
+  width: 200px;
 
+}
 

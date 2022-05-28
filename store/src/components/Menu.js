@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
-import { cartContext } from "../services/CartContextProvider";
+import React from "react";
+//redux
+import { useSelector } from "react-redux";
+//router-dom
 import { Link } from "react-router-dom";
+//component
 import Theme from "./Theme";
 
 const Menu = ({ open }) => {
-  const { state } = useContext(cartContext);
+  const itemCounter = useSelector((state) => state.cart.itemCounter);
 
   return (
     <div>
@@ -109,9 +112,8 @@ const Menu = ({ open }) => {
             </svg>
             <p>Cart</p>
             <p className="absolute top-0 dark:text-black font-bold shadow-sm shadow-amber-300 rounded-full px-1  right-0 bg-amber-300 text-xs ">
-              {state.itemCounter}
+              {itemCounter}
             </p>
-            
           </Link>
         </li>
         <Theme />

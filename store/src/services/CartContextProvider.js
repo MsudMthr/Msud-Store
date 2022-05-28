@@ -30,7 +30,6 @@ const cartReducer = (state, action) => {
         ...state,
         selectedItems: [...state.selectedItems],
         ...sumItems(state.selectedItems),
-        
       };
     case "REMOVE_ITEM":
       const newSelectedItem = state.selectedItems.filter(
@@ -107,9 +106,9 @@ const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   useEffect(() => {
-    localStorage.setItem("cart" , JSON.stringify(state.selectedItems))
-    localStorage.setItem("favorite" ,JSON.stringify(state.favorite) )
-  } ,[state.selectedItems , state.favorite])
+    localStorage.setItem("cart", JSON.stringify(state.selectedItems));
+    localStorage.setItem("favorite", JSON.stringify(state.favorite));
+  }, [state.selectedItems, state.favorite]);
 
   return (
     <cartContext.Provider value={{ state, dispatch }}>

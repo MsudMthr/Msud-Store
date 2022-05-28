@@ -1,14 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 //hooks
 import { useParams } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
 
-//context
-import { cartContext } from "../services/CartContextProvider";
 
 //functions
-import { isFavorite, isInCart, quantityCount } from "../helper/function";
 import axios from "axios";
 
 import Loading from "./Loading";
@@ -20,7 +17,6 @@ const DetailProduct = () => {
   const param = useParams();
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { state, dispatch } = useContext(cartContext);
   console.log(product);
 
   useEffect(() => {
