@@ -2,6 +2,9 @@ import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 
+import { useSelector, useDispatch } from "react-redux";
+import { filterByCategory } from "../redux/filterProducts/filterProductsAction";
+
 const people = [
   { category: "All Products" },
   { category: "men's clothing" },
@@ -10,10 +13,11 @@ const people = [
   { category: "electronics" },
 ];
 
-export default function CategoryFilter({ setCategory }) {
+export default function CategoryFilter() {
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState(people[0]);
   useEffect(() => {
-    setCategory(selected);
+    dispatch(filterByCategory(selected));
   }, [selected]);
   return (
     <div className="relative top-0 w-72 -z-10">

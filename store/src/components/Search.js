@@ -1,16 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
-import { productContext } from "../services/ProductContextProvider";
+import { useSelector, useDispatch } from "react-redux";
+import { searchText } from "./../redux/filterProducts/filterProductsAction";
 
 const Search = () => {
+  const dispatch = useDispatch();
+  const search = useSelector((state) => state.filterProducts.searchText);
+
   const [showInput, setShowInput] = useState(false);
-  const { searchText, setSearchText } = useContext(productContext);
   const isShow = () => {
     setShowInput(!showInput);
   };
 
   const handleChange = (event) => {
-    setSearchText(event.target.value);
+    dispatch(searchText(event.target.value));
   };
   return (
     <div className="flex justify-center items-center ">
@@ -39,7 +42,7 @@ const Search = () => {
         type="search"
         placeholder="search"
         onChange={handleChange}
-        value={searchText}
+        value={search}
         className={`z-0 absolute w-full  left-0 top-0 h-full text-lg capitalize dark:text-white dark:bg-slate-800 outline-none  overflow-hidden rounded-md px-4 placeholder:text-xl shadow-lg transition ease-in duration-300 ${
           showInput ? "flex  opacity-100" : "hidden opacity-0"
         } `}

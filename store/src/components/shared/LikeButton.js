@@ -11,7 +11,6 @@ const LikeButton = ({ product }) => {
 
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
-  console.log(favorites);
   return (
     <div>
       <button

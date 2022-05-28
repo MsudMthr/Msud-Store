@@ -4,7 +4,6 @@ import { useSelector , useDispatch } from "react-redux";
 
 
 
-import { cartContext } from "../../services/CartContextProvider";
 import { isFavorite, isInCart, quantityCount } from "../../helper/function";
 import { increase, addItem ,removeItem,decrease } from './../../redux/Cart/CartAction';
 

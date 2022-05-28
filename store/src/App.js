@@ -5,10 +5,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 
-//context
-import ProductContextProvider from "./services/ProductContextProvider";
-import CartContextProvider from "./services/CartContextProvider";
-
 //components
 import Navabr from "./components/Navabr";
 import Cards from "./components/Cards";

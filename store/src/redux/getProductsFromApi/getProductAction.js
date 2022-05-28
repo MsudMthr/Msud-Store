@@ -17,7 +17,6 @@ const fetchProducts = () => {
       .then((response) => {
         const products = response.data;
         dispatch(fetchProductsSuccess(products));
-        console.log(products);
       })
       .catch((error) => {
         const errorMsg = error.message;

@@ -13,7 +13,7 @@ const Cart = () => {
   return (
     <>
       {cart.selectedItems.length ? (
-        <div className="w-full flex flex-col-reverse   items-center md:items-start md:flex-row justify-between gap-3  dark:bg-slate-800 dark:text-white">
+        <div className="w-full flex flex-col-reverse min-h-screen   items-center md:items-start md:flex-row justify-between gap-3  dark:bg-slate-800 dark:text-white">
           <div className="w-full md:w-9/12">
             {cart.selectedItems.map((item) => (
               <CartItem data={item} />
@@ -43,7 +43,7 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <div className="flex h-screen items-center justify-center flex-col">
+        <div className="flex h-screen items-center justify-center flex-col dark:text-white capitalize  dark:bg-slate-500">
           <div className="emptyCart"></div>
           <h1 className="text-2xl font-bold"> no order yet!</h1>
           <p className="w-52 text-center text-xs opacity-50">

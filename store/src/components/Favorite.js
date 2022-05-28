@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import Card from "./shared/Card";
 
 const Favorite = () => {
-  const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
 
   // const { state } = useContext(cartContext);
