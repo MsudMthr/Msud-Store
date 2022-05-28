@@ -10,13 +10,14 @@ const Favorite = () => {
     <div className="dark:bg-slate-800 dark:text-white">
       {state.favorite.length ? (
         <div className="flex  justify-evenly flex-wrap ">
-          {state.favorite.map((item) => (
-            <div
-              className={` w-72 sm:w-48  mx-auto md:w-56 flex flex-col justify-between max-h-96  rounded-sm border m-2 overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-white dark:hover:shadow-md p-2 transition-all delay-100 dark:bg-slate-600`}
-            >
-              <Card productData={item} />
-            </div>
-          ))}
+          {state.favorite ||
+            JSON.parse(localStorage.getItem("favorite")).map((item) => (
+              <div
+                className={` w-72 sm:w-48  mx-auto md:w-56 flex flex-col justify-between max-h-96  rounded-sm border m-2 overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-white dark:hover:shadow-md p-2 transition-all delay-100 dark:bg-slate-600`}
+              >
+                <Card productData={item} />
+              </div>
+            ))}
         </div>
       ) : (
         <div className="h-screen flex justify-center items-center flex-col gap-3">

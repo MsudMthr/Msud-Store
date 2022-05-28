@@ -1,14 +1,22 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 
-import { productContext } from "../services/ProductContextProvider";
+// import { productContext } from "../services/ProductContextProvider";\
+
+import { useDispatch, useSelector } from "react-redux";
+import fetchProducts from "../redux/getProductsFromApi/getProductAction";
 
 import Card from "./shared/Card";
 
-const Suggestion = ({ category }) => {
-  const { products } = useContext(productContext);
+const Suggestion = ({ category, title }) => {
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
-  const suggestProduct = products.filter(
-    (product) => product.category === category
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  const suggestProduct = products.products.filter(
+    (product) => product.category === category && product.title !== title
   );
 
   console.log(suggestProduct);

@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext, useEffect } from "react";
 
 const initialState = {
   selectedItems: [],
@@ -30,6 +30,7 @@ const cartReducer = (state, action) => {
         ...state,
         selectedItems: [...state.selectedItems],
         ...sumItems(state.selectedItems),
+        
       };
     case "REMOVE_ITEM":
       const newSelectedItem = state.selectedItems.filter(
@@ -104,6 +105,11 @@ export const cartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem("cart" , JSON.stringify(state.selectedItems))
+    localStorage.setItem("favorite" ,JSON.stringify(state.favorite) )
+  } ,[state.selectedItems , state.favorite])
 
   return (
     <cartContext.Provider value={{ state, dispatch }}>
