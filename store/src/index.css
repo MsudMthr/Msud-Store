@@ -8,9 +8,19 @@ body {
 
 .emptyCart {
   background: url("./images/emptyCart-removebg-preview.png") no-repeat center;
-  background-size: cover; 
+  background-size: cover;
   height: 200px;
   width: 200px;
-
 }
 
+.input-form {
+  @apply flex my-1 transition-all delay-100 border-2 border-blue-600 dark:border-blue-400 outline-none px-2 min-w-[250px] required:border-2 required:border-red-400 focus:border focus:border-sky-300 dark:text-black;
+}
+
+.label-form {
+  @apply dark:text-white pl-2 mt-3;
+}
+
+.error-form {
+  @apply text-red-900 bg-rose-400 font-bold text-center w-24 rounded-md text-sm;
+}

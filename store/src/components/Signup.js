@@ -1,141 +1,102 @@
-import React, { useState, useEffect } from "react";
-import Formfield from "./Formfield";
-import { validation } from "./functions/validation";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
-import { toastHandler } from "./functions/toast";
-// import { sendData } from "./functions/sendData";
+import React from "react";
+import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup = () => {
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    isAccept: false,
-  });
-
-  const [error, setError] = useState({});
-  const [touched, setTouched] = useState({});
-
-  useEffect(
-    () => {
-      setError(validation(data, "signup"));
-    },
-    [data],
-    [touched]
-  );
-
-  const changeHandler = (event) => {
-    if (event.target.type === "checkbox") {
-      setData({ ...data, [event.target.name]: event.target.checked });
-    } else {
-      setData({ ...data, [event.target.name]: event.target.value });
-    }
-  };
-
-  const touchHandler = (event) => {
-    setTouched({ ...touched, [event.target.name]: true });
-  };
-
-  const submitHandler = async (event) => {
-    event.preventDefault();
-    if (!Object.keys(error).length) {
-      console.log(data);
-      toastHandler("success", "you sign success");
-      setTimeout(() => {
-        navigate("/products", { replace: true });
-      }, 3000);
-    } else {
-      toastHandler("error", "invalid data!");
-      setTouched({
-        name: true,
-        email: true,
-        password: true,
-        confirmPassword: true,
-        isAccept: true,
-      });
-    }
-  };
-
   const navigate = useNavigate();
-
   return (
-    <form
-      onSubmit={submitHandler}
-      className="flex flex-col h-screen justify-center items-center dark:bg-slate-800 transition-all delay-[50ms] "
-    >
-      <h2 className="font-bold text-xl text-blue-900 mb-4 dark:text-blue-200">
-        SignUP
-      </h2>
-      <Formfield
-        text="name"
-        type="text"
-        name="name"
-        value={data.name}
-        changeHandler={changeHandler}
-        touchHandler={touchHandler}
-        touch={touched.name}
-        massage={error.name}
-      />
-      <Formfield
-        text="email"
-        type="email"
-        name="email"
-        value={data.email}
-        changeHandler={changeHandler}
-        touchHandler={touchHandler}
-        touch={touched.email}
-        massage={error.email}
-      />
-      <Formfield
-        text="password"
-        type="password"
-        name="password"
-        value={data.password}
-        changeHandler={changeHandler}
-        touchHandler={touchHandler}
-        touch={touched.password}
-        massage={error.password}
-      />
-      <Formfield
-        text="confirmPassword"
-        type="password"
-        name="confirmPassword"
-        value={data.confirmPassword}
-        changeHandler={changeHandler}
-        touchHandler={touchHandler}
-        touch={touched.confirmPassword}
-        massage={error.confirmPassword}
-      />
-      <Formfield
-        text="I Accept term of privacy and policy"
-        type="checkbox"
-        name="isAccept"
-        value={data.isAccept}
-        changeHandler={changeHandler}
-        touchHandler={touchHandler}
-        touch={touched.isAccept}
-        massage={error.isAccept}
-      />
-      <div className="flex justify-between items-center w-52">
-        <button
-          onClick={() => navigate("/login")}
-          className="font-medium text-blue-500 text-lg  py-1 px-4 rounded-md  border-2  border-blue-200 dark:text-lime-400"
-        >
-          Login
-        </button>
-
-        <button
-          type="submit"
-          className="bg-blue-700 text-white py-2 px-4 rounded-md dark:bg-cyan-800"
-        >
-          SignUP
-        </button>
-      </div>
-      <ToastContainer />
-    </form>
+    <div className="flex flex-col h-screen justify-center items-center dark:bg-slate-800 transition-all delay-[50ms] ">
+      <h1 className="font-bold text-xl text-blue-900 mb-4 dark:text-blue-200">
+        Sign Up
+      </h1>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.email) {
+            errors.email = "Required";
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+          ) {
+            errors.email = "Invalid email address";
+          }
+          return errors;
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            createUserWithEmailAndPassword(auth, values.email, values.password)
+              .then((user) => {
+                console.log(user);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+            setSubmitting(false);
+          }, 400);
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          /* and other goodies */
+        }) => (
+          <form onSubmit={handleSubmit} className="flex flex-col">
+            <label htmlFor="email" className="label-form">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              className={`input-form `}
+            />
+            <p className="error-form">
+              {errors.email && touched.email && errors.email}
+            </p>
+            <label htmlFor="password" className="label-form">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              className={`input-form `}
+            />
+            <p className="error-form">
+              {errors.password && touched.password && errors.password}
+            </p>
+            <div className="flex justify-between flex-row-reverse mt-3">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-blue-700 text-white py-2 px-4 rounded-md dark:bg-cyan-800"
+              >
+                Submit
+              </button>
+              <button
+                onClick={() => navigate("/Login")}
+                className="font-medium text-blue-500 text-lg  py-1 px-4 rounded-md  border-2 border-blue-200 dark:text-lime-400"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        )}
+      </Formik>
+    </div>
   );
 };
 

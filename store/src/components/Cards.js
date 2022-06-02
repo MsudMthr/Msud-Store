@@ -41,7 +41,6 @@ const Cards = () => {
   };
 
   const product = filterProducts();
-  console.log(productsState);
   return (
     <section>
       {productsState.isLoading ? (
