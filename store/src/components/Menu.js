@@ -1,13 +1,17 @@
 import React from "react";
 //redux
 import { useSelector } from "react-redux";
+
 //router-dom
 import { Link } from "react-router-dom";
 //component
 import Theme from "./Theme";
+import { firstLetter } from './../helper/function';
 
 const Menu = ({ open }) => {
   const itemCounter = useSelector((state) => state.cart.itemCounter);
+  const user = useSelector((state) => state.userState);
+  console.log(user);
 
   return (
     <div>
@@ -58,27 +62,6 @@ const Menu = ({ open }) => {
         </li>
         <li>
           <Link
-            to={"/SignUp"}
-            className="flex gap-1 mx-2 cursor-pointer hover:text-violet-600 dark:hover:text-red-400  transition-all md:border-b-2 dark:md:border-stone-600 px-2 py-2  "
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-              <path
-                fillRule="evenodd"
-                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <p>SignUp</p>
-          </Link>
-        </li>
-        <li>
-          <Link
             to={"/Favorite"}
             className="flex gap-1 mx-2 cursor-pointer hover:text-violet-600 dark:hover:text-red-400  transition-all md:border-b-2 dark:md:border-stone-600 px-2 py-2  "
           >
@@ -115,6 +98,39 @@ const Menu = ({ open }) => {
               {itemCounter}
             </p>
           </Link>
+        </li>{" "}
+        <li>
+          {!user.user.length ? (
+            <div>
+              {user.photoURL ? (
+                <img src={user.photoURL} alt={user.email} />
+              ) : (
+                <div className="w-10 h-10 bg-blue-400 flex items-center justify-center rounded-full uppercase font-bold">
+                  {user.email ? firstLetter(user.user.email) : <span className="w-2 h-2 border-4 border-x-black animate-spin rounded-full"></span>}
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link
+              to={"/SignUp"}
+              className="flex gap-1 mx-2 cursor-pointer hover:text-violet-600 dark:hover:text-red-400  transition-all md:border-b-2 dark:md:border-stone-600 px-2 py-2  "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                <path
+                  fillRule="evenodd"
+                  d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <p>SignUp</p>
+            </Link>
+          )}
         </li>
         <Theme />
       </ul>

@@ -22,7 +22,6 @@ const Cards = () => {
   const dispatch = useDispatch();
   const productsState = useSelector((state) => state.products);
   const filterState = useSelector((state) => state.filterProducts);
-  console.log(filterState);
   const filterProducts = () => {
     if (filterState.category.category === "All Products") {
       const searchProducts = productsState.products.filter((item) =>
