@@ -137,6 +137,7 @@ const Login = () => {
             signInWithEmailAndPassword(auth, values.email, values.password)
               .then((user) => {
                 console.log(user);
+                navigate("/Profile", { replace: true });
               })
               .catch((err) => {
                 console.log(err);
@@ -192,7 +193,7 @@ const Login = () => {
                 disabled={isSubmitting}
                 className="bg-blue-700 text-white py-2 px-4 rounded-md dark:bg-cyan-800"
               >
-                Submit
+                Login
               </button>
               <button
                 onClick={() => navigate("/signup")}

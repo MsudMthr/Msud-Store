@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 //redux
 import { useSelector } from "react-redux";
 
@@ -6,12 +6,16 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //component
 import Theme from "./Theme";
-import { firstLetter } from './../helper/function';
+import { firstLetter } from "./../helper/function";
+
+import ProfileSVG from "../images/profile-user-svgrepo-com.svg";
 
 const Menu = ({ open }) => {
   const itemCounter = useSelector((state) => state.cart.itemCounter);
   const user = useSelector((state) => state.userState);
-  console.log(user);
+
+
+
 
   return (
     <div>
@@ -100,16 +104,14 @@ const Menu = ({ open }) => {
           </Link>
         </li>{" "}
         <li>
-          {!user.user.length ? (
-            <div>
-              {user.photoURL ? (
-                <img src={user.photoURL} alt={user.email} />
-              ) : (
-                <div className="w-10 h-10 bg-blue-400 flex items-center justify-center rounded-full uppercase font-bold">
-                  {user.email ? firstLetter(user.user.email) : <span className="w-2 h-2 border-4 border-x-black animate-spin rounded-full"></span>}
-                </div>
-              )}
-            </div>
+          {user.isLoggedIn ? (
+            <Link
+              to={"/Profile"}
+              className="flex gap-1 mx-2  cursor-pointer relative hover:text-violet-600 dark:hover:text-red-400  transition-all md:border-b-2 dark:md:border-stone-600 px-2 py-2  "
+            >
+              <img src={ProfileSVG} alt="profile" className="h-5 w-5" />
+              <p>Profile</p>
+            </Link>
           ) : (
             <Link
               to={"/SignUp"}

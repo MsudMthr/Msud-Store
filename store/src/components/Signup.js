@@ -1,11 +1,16 @@
 import React from "react";
 import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
+//authentication
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
+//redux
+import { useSelector } from "react-redux";
+
 const Signup = () => {
   const navigate = useNavigate();
+  const { isLogged } = useSelector((state) => state.userState);
   return (
     <div className="flex flex-col h-screen justify-center items-center dark:bg-slate-800 transition-all delay-[50ms] ">
       <h1 className="font-bold text-xl text-blue-900 mb-4 dark:text-blue-200">
@@ -29,11 +34,13 @@ const Signup = () => {
             createUserWithEmailAndPassword(auth, values.email, values.password)
               .then((user) => {
                 console.log(user);
+                navigate("/Profile", { replace: true });
               })
               .catch((err) => {
                 console.log(err);
               });
             setSubmitting(false);
+          
           }, 400);
         }}
       >
@@ -84,11 +91,11 @@ const Signup = () => {
                 disabled={isSubmitting}
                 className="bg-blue-700 text-white py-2 px-4 rounded-md dark:bg-cyan-800"
               >
-                Submit
+                SignUp
               </button>
               <button
                 onClick={() => navigate("/Login")}
-                className="font-medium text-blue-500 text-lg  py-1 px-4 rounded-md  border-2 border-blue-200 dark:text-lime-400"
+                className="font-medium text-blue-500 text-lg py-1 px-4 rounded-md  border-2 border-blue-200 dark:text-lime-400"
               >
                 Login
               </button>

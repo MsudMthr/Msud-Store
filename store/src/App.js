@@ -27,11 +27,11 @@ import Profile from "./components/Profile";
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    const unSubScribe = onAuthStateChanged(auth, (userAuth) => {
+    const unSubScribe = onAuthStateChanged(auth, async (userAuth) => {
       if (userAuth) {
-        dispatch(subscribeSuccess(userAuth));
+        await dispatch(subscribeSuccess(userAuth));
       } else {
-        dispatch(subscribeFailure("error"));
+        await dispatch(subscribeFailure("error"));
       }
     });
     return unSubScribe;
@@ -56,7 +56,7 @@ const App = () => {
                 <Route path={"/"} element={<HomePage />} />
                 <Route path="/Cart" element={<Cart />} />
                 <Route path="/Favorite" element={<Favorite />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/Profile" element={<Profile />} />
               </Routes>
             </div>
           </div>
