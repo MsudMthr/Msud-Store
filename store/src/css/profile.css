@@ -1,6 +1,5 @@
 .profile {
-  @apply h-96 w-4/5 p-3;
-
+  @apply h-96 w-4/5 p-3 dark:bg-gradient-to-r dark:from-lime-700 dark:via-cyan-700 dark:to-purple-700 transition-all;
   /* ff 3.6+ */
   background: -moz-linear-gradient(
     90deg,
@@ -41,7 +40,7 @@
 }
 
 .updateProfile {
-  @apply mx-auto px-3 py-2 rounded-md shadow-lg justify-end;
+  @apply mx-auto px-3 py-2 rounded-md shadow-lg justify-end font-medium;
   animation: gradient 2s infinite alternate linear;
 
   /* ff 3.6+ */
@@ -93,3 +92,29 @@
     filter: hue-rotate(90deg);
   }
 }
+
+.btn-container {
+  @apply flex items-center justify-end w-full gap-4;
+}
+.btn-container:hover span {
+  @apply opacity-100 select-none;
+  transition: 1s all;
+}
+
+.button-account {
+  @apply bg-red-600 rounded-xl p-2 font-medium w-auto hover:shadow-md hover:shadow-red-500;
+  transition: 0.5s all;
+}
+
+.button-account img {
+  @apply w-5 h-5;
+}
+
+.update__input__container {
+  @apply flex flex-col ;
+}
+
+.close__update_section {
+  @apply self-end absolute top-1 right-1 ;
+}
+

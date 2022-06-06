@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.820df02c.css",
-    "main.js": "/static/js/main.b5c0d954.js",
+    "main.css": "/static/css/main.bd1aeca1.css",
+    "main.js": "/static/js/main.b364bbb1.js",
     "static/media/Free_Vector___Dressing_room_concept_illustration-removebg-preview.png": "/static/media/Free_Vector___Dressing_room_concept_illustration-removebg-preview.3c1d48771e07f5e47380.png",
     "static/media/emptyCart-removebg-preview.png": "/static/media/emptyCart-removebg-preview.2b59237e818b82662ab2.png",
+    "static/media/upload-svgrepo-com.svg": "/static/media/upload-svgrepo-com.3b3505a1bf0baf0db275961ee39f6d26.svg",
+    "static/media/profile-user-svgrepo-com.svg": "/static/media/profile-user-svgrepo-com.2ab6e48325704cf34a4cfc1c78ffcfee.svg",
     "index.html": "/index.html",
-    "main.820df02c.css.map": "/static/css/main.820df02c.css.map",
-    "main.b5c0d954.js.map": "/static/js/main.b5c0d954.js.map"
+    "main.bd1aeca1.css.map": "/static/css/main.bd1aeca1.css.map",
+    "main.b364bbb1.js.map": "/static/js/main.b364bbb1.js.map"
   },
   "entrypoints": [
-    "static/css/main.820df02c.css",
-    "static/js/main.b5c0d954.js"
+    "static/css/main.bd1aeca1.css",
+    "static/js/main.b364bbb1.js"
   ]
 }

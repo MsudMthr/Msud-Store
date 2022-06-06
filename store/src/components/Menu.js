@@ -6,16 +6,12 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //component
 import Theme from "./Theme";
-import { firstLetter } from "./../helper/function";
+// import { firstLetter } from "./../helper/function";
 
-import ProfileSVG from "../images/profile-user-svgrepo-com.svg";
 
 const Menu = ({ open }) => {
   const itemCounter = useSelector((state) => state.cart.itemCounter);
   const user = useSelector((state) => state.userState);
-
-
-
 
   return (
     <div>
@@ -109,7 +105,18 @@ const Menu = ({ open }) => {
               to={"/Profile"}
               className="flex gap-1 mx-2  cursor-pointer relative hover:text-violet-600 dark:hover:text-red-400  transition-all md:border-b-2 dark:md:border-stone-600 px-2 py-2  "
             >
-              <img src={ProfileSVG} alt="profile" className="h-5 w-5" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                  clipRule="evenodd"
+                />
+              </svg>{" "}
               <p>Profile</p>
             </Link>
           ) : (
